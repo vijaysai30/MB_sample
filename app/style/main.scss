@@ -1,0 +1,234 @@
+@import "../vendors/bourbon/bourbon";
+@import "../vendors/neat/neat";
+@import "variables";
+@import "typo";
+@import "mixins";
+@import "components/text";
+@import "components/nav";
+@import "components/hero";
+@import "components/tab-router";
+@import "components/accordion";
+@import "components/aftertab";
+@import "components/searchmodule";
+@import "components/section5";
+@import "components/rights-modal";
+@import "components/teaserbox";
+@import "components/overlay";
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.word-breaker {
+  font-size: 0px;
+}
+
+#app {
+  margin-top: 0px;
+  @include outer-container($app-max-width);
+}
+.anchor-bar {
+  $height-anchorbar: 60px;
+  cursor: pointer;
+  @include span-columns(12);
+  @include omega();
+  height: $height-anchorbar;
+  background-color: $mb-color-fancy-turk;
+  .anchor-bar-inner {
+
+    text-align: center;
+    height: $height-anchorbar;
+    line-height: $height-anchorbar;
+    span {
+      @extend .btn;
+      position: relative;
+      &:before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        background: url("./assets/Images/arrow_down.png") center center no-repeat transparent;
+        left: -25px;
+        top: 4px;
+        background-size: 17px;
+      }
+    }
+
+  }
+}
+.telrow-2{
+  margin-top: 3rem;
+}
+.telrow {
+
+  .normaltxt {
+    margin-bottom: 1em;
+  }
+  h4.phony,
+  h4.fax {
+    margin: 0 0 0.5em 0;
+    font-weight: normal;
+    font-size: 1em;
+  }
+
+  h4.phony {
+    &:before {
+      background: url(./assets/Images/phony.png) center 5px no-repeat transparent;
+      background-size: 15px auto;
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      margin-left: -50px;
+      margin-top: -5px;
+    }
+  }
+
+  h4.fax {
+    &:before {
+      background: url(./assets/Images/print.png) center 5px no-repeat transparent;
+      background-size: 22px auto;
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      margin-left: -49px;
+      margin-top: -4px;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    width: 60px;
+    height: 50px;
+
+  }
+  .content {
+    display: inline-block;
+    padding-left: 65px;
+    width: 100%;
+    font-size: 17px;
+    line-height: 21px;
+  }
+  .mailcontent {
+    font-size: 14px;
+  }
+  a {
+    color: $mb-color-bgwhite;
+    text-decoration: none;
+  }
+
+  .phoneicon {
+    background: url(./assets/Images/phony.png) center 5px no-repeat transparent;
+    background-size: 20px auto;
+  }
+
+  .mailicon {
+    background: url(./assets/Images/mail.png) center 5px no-repeat transparent;
+    background-size: 20px auto;
+  }
+
+  .phonywhenkey {
+    width: 50%;
+    float: left;
+    font-size: 14px;
+  }
+
+  .phonywhenvalue {
+    width: 50%;
+    float: left;
+    font-size: 14px;
+  }
+
+  @include media($mobile) {
+    .phonywhenkey {
+      width: 100%;
+      clear: both;
+      font-weight: lighter;
+    }
+
+    .phonywhenvalue {
+      width: 100%;
+      clear: both;
+      font-weight: bolder;
+    }
+  }
+}
+
+.telrow-1 {
+  // border-bottom: 1px solid $mb-color-bglightgrey;
+}
+
+footer {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+  @include outer-container(1200px);
+  padding-top: 2em;
+  .footertext {
+    @include span-columns(10 of 12);
+    @include shift(1);
+    text-align: center;
+    a {
+      color: $mb-color-normaltext;
+      text-decoration: none;
+      padding-right: 10px;
+      text-align: center;
+      &:hover {
+        color: $mb-color-fancy-turk;
+      }
+    }
+  }
+}
+
+.text-content-wrapper {
+  margin-top: -1px;
+}
+
+#fileslist {
+  a.autolink {
+
+  }
+}
+
+#mapcontainer {
+
+}
+
+@keyframes spin {
+  0%   {transform: rotate(0deg) translate(-30px, -30px);}
+  100% {transform: rotate(360deg) translate(-30px, -30px);}
+}
+
+#spinneroverlay {
+  display:none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+
+  &[data-active=true]{
+    display:block;
+  }
+
+  #spinner {
+    animation: spin 1s infinite linear;
+    position: absolute;
+    width:60px;
+    height:60px;
+    top: 50%;
+    left: 50%;
+
+    transform-origin: 0% 0% 0px;
+    background: url(./assets/Images/spinner.png) center center no-repeat transparent;
+
+  }
+}

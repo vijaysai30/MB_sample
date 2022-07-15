@@ -1,0 +1,109 @@
+#s4-content{
+  h2{
+    letter-spacing: -0.5px;
+  }
+}
+.citebox {
+  margin-top: 15px;
+  padding-top: 25px;
+  border-top: 1px solid $mb-color-bglightgrey;
+  .citerow {
+    width: 100%;
+    overflow: visible;
+    margin-bottom: 1em;
+    position: relative;
+    .lefticon {
+      position: absolute;
+      top: 20;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      line-height: 50px;
+      font-size: 50px;
+      display:none;
+
+      /*background: url(./assets/Images/zitatsign.png) center top no-repeat transparent;
+      background-size: contain;*/
+    }
+
+    .righticon {
+      position: absolute;
+      font-size: 50px;
+      right: 0;
+      bottom: -30px;
+      width: 50px;
+      height:50px;
+      /*background: url(./assets/Images/zitatsign.png) center bottom no-repeat transparent;
+      background-size: contain;*/
+      display:none;
+    }
+
+    .cite {
+      padding: 20px 50px;
+    }
+
+    @include media($mobile) {
+
+      .lefticon {
+        width: 20px;
+      }
+
+      .righticon {
+        width: 20px;
+      }
+
+      .cite {
+        padding: 25px 20px 20px;
+        font-size: 0.9em;
+      }
+    }
+
+  }
+
+  .subsrow {
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 1em;
+    position: relative;
+    padding: 0 50px 25px;
+    border-bottom: 1px solid $mb-color-bglightgrey;
+    .bubblewrapper {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      margin-right: 15px;
+      float: left;
+      border-radius:60px;
+      overflow: auto;
+      z-index: 10;
+      .bubbleimg {
+        position:relative;
+        width: 120px;
+        height: 120px;
+        background: url(./assets/Images/gesicht.jpg) center center no-repeat transparent;
+        background-size: cover;
+
+
+      }
+
+    }
+
+    .persondata {
+      float: left;
+      margin-top: 15px;
+      .name {
+        font-weight: bold;
+      }
+      .txt {
+
+      }
+      .signing {
+        background: url(./assets/Images/signatures.png) left center no-repeat transparent;
+        background-size: contain;
+        height: 50px;
+      }
+    }
+
+  }
+
+}

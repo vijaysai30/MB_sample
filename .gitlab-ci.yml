@@ -1,0 +1,48 @@
+---
+stages:
+  - build
+  - build image
+  - deploy
+
+build:
+  stage: build
+  image: docker.io/library/node:16
+  script:
+    - npm install
+    - npm run build
+  cache:
+    paths:
+      - node_modules
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+    paths:
+      - build/
+    expire_in: 1 hour
+
+imagebuild:
+  stage: build image
+  image: quay.io/buildah/stable
+  variables:
+    STORAGE_DRIVER: vfs
+  script:
+    - buildah bud -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$CI_PIPELINE_ID .
+    - echo $CI_REGISTRY_PASSWORD | buildah login --username $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+    - buildah push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$CI_PIPELINE_ID
+
+deploy:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  dependencies: []
+  tags:
+    - deploy_v2
+  before_script:
+    - kubectl config set-cluster k8s-mbvd --server=https://192.168.239.6:6443
+    - kubectl config set clusters.k8s-mbvd.certificate-authority-data $K8S_CA_DATA
+    - kubectl config set-credentials mb-versicherung-deploy --token=$K8S_DEPLOY_TOKEN
+    - kubectl config set-context k8s-mb-versicherung --cluster=k8s-mbvd --user=mb-versicherung-deploy --namespace=mb-versicherung
+    - kubectl config use-context k8s-mb-versicherung
+  script:
+    - kubectl set image deployment.v1.apps/mb-versicherung-static-website static-website=$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$CI_PIPELINE_ID
+    - kubectl annotate deployment.v1.apps/mb-versicherung-static-website kubernetes.io/change-cause="image updated $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$CI_PIPELINE_ID at $(date) by $GITLAB_USER_NAME"
+  when: manual

@@ -1,0 +1,21 @@
+.DS_Store
+.sass-cache/
+.idea
+.metadata
+.settings
+.tmp
+.svn
+.vscode
+postcss
+atlassian-ide-plugin.xml
+
+## generated files
+*.css.map
+*.js.map
+
+build.tar.gz
+
+node_modules
+bower_components
+build
+postcss

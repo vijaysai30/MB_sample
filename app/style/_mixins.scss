@@ -1,0 +1,19 @@
+@mixin arrow ($direction: right, $color: $color-text, $size: 7px, $thickness: 1px) {
+  $deg: 45deg;
+
+  border: solid $thickness $color;
+  border-width: $thickness $thickness 0 0;
+  display: inline-block;
+  height: $size;
+  width: $size;
+
+  @if $direction == bottom {
+    $deg: $deg + 90deg;
+  } @else if $direction == left {
+    $deg: $deg + 90deg * 2;
+  } @else if $direction == top {
+    $deg: $deg + 90deg * 3;
+  }
+
+  @include transform(rotate($deg));
+}

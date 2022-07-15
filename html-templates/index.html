@@ -1,0 +1,63 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- <link href="stylesprefixed.css" rel="stylesheet"/> -->
+    <link href="./main.css" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/Images/favicon.ico">
+    <script type="application/javascript" src="https://app.usercentrics.eu/latest/main.js" id="maiz9RWOE" ></script>
+</head>
+<body>
+
+<div id="app" class="container">
+    %+1.section-top/topnav.html%
+    %+1.section-top/banner.html%
+
+    %+1.section-top/s1-content.html%
+
+    %+2.section-products/banner.html%
+    %+2.section-products/tabnav.html%
+    %+2.section-products/aftertab.html%
+
+    %+3.section-haendlersuche/searchmodule.html%
+
+    %+4.section-ansprechpartner/banner.html%
+    %+4.section-ansprechpartner/content.html%
+
+    %+5.section-unserunternehmen/banner.html%
+    %+5.section-unserunternehmen/content.html%
+
+    %+6.section-footer/footer.html%
+</div>
+
+<div id="rights-modal" data-open="false">
+    %+7.modal-extras/modal.html%
+</div>
+<div id="spinneroverlay">
+    <div id="spinner">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    window.PXLPRK = {};
+    window.initMap = function(){
+
+        PXLPRK.InfoBox.init();
+        PXLPRK.RichMarker.init();
+        PXLPRK.Retailer.init();
+       // $("#haendlersearchbtn").click();
+    }
+
+</script>
+<script type="text/javascript" src="vendors.js" charset="utf-8"></script>
+<script type="text/javascript" src="app.js" charset="utf-8"></script>
+
+<script src="./assets/retailersuche/google_maps_infobox.js" type="text/javascript"></script>
+<script src="./assets/retailersuche/google_maps_richmarker.js" type="text/javascript"></script>
+<script src="./assets/retailersuche/retailers.js" type="text/javascript"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWs5Ef_-EUfRFEhJPxwryNq_pcwCsmu-A&callback=initMap">
+</script>
+</body>
+</html>

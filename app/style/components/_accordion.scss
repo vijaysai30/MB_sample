@@ -1,0 +1,160 @@
+$accordionheaderheight: 65px;
+
+.accordion {
+  margin: 3rem 0 0;
+  .accordion-section {
+    background-color: $mb-color-bgwhite;
+    margin-bottom: 2px;
+    overflow: auto;
+    width: 100%;
+    .accordion-section-header
+
+    #fileslist{
+      margin-top:15px;
+    }
+    a.autolink {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 0;
+        background: url("./assets/Images/download.png") center center no-repeat transparent;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+
+      }
+    }
+
+    .accordion-section-header {
+      height: $accordionheaderheight+1px;
+      line-height: $accordionheaderheight;
+      padding-left: 25px;
+      padding-right: 25px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+
+      .innertxt {
+        @extend .normaltxt;
+        color: $mb-color-bgblack;
+        font-size: 1.125rem;
+        // font-weight: bold;
+        line-height: $accordionheaderheight;
+      }
+
+      .innertext2row {
+        @include media($mobile) {
+          font-size: 0.80em;
+        }
+
+      }
+
+      .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: $accordionheaderheight;
+        height: $accordionheaderheight;
+        overflow: hidden;
+
+        .plus, .minus {
+          transition: 0.2s all ease-in-out;
+          position: absolute;
+          width: $accordionheaderheight;
+          height: $accordionheaderheight;
+          right: 0;
+        }
+
+        .plus {
+          top: 0;
+          opacity: 1;
+          background: url(./assets/Images/plus.png) center center no-repeat transparent;
+          background-size: 15px 15px;
+        }
+
+        .minus {
+          top: 0;
+          opacity: 0;
+          background: url(./assets/Images/closeminus.png) center center no-repeat transparent;
+          background-size: 16px 3px;
+
+        }
+
+      }
+    }
+
+    .accordion-section-content {
+      height: 0;
+      opacity: 1;
+      overflow: hidden;
+      padding-left: 25px;
+      padding-right: 25px;
+      transition: 0.2s all ease-in-out;
+      @include media($mobile) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      .innertxt {
+        color: $mb-color-bgblack;
+        overflow: auto;
+        width: 100%;
+        a {
+          color: $mb-color-fancy-turk;
+        }
+      }
+      ul {
+        margin: 0;
+        padding: 1em 0 1em 1.5em;
+      }
+      @include media($mobile) {
+        ul {
+          padding: 0.1em 0 0.11em 1.5em;
+          li {
+            font-size: 0.8em;
+          }
+        }
+
+      }
+
+      li {
+
+      }
+
+    }
+
+    &[data-open="true"] {
+      background-color: $mb-color-bgwhite;
+      .accordion-section-header {
+
+        // .innertxt {
+        //   border-bottom: 1px solid $mb-color-bglightgrey;
+        // }
+
+        .plus {
+          /*top: $accordionheaderheight;*/
+          opacity: 0;
+          background-color: transparent;
+        }
+
+        .minus {
+          top: 0;
+          opacity: 1;
+          background-color: transparent;
+        }
+      }
+
+      .accordion-section-content {
+        opacity: 1;
+
+        margin-bottom: $accordionheaderheight/2;
+        @include media($mobile) {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}
